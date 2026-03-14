@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-white font-sans antialiased;
+    background: #0B1020;
+    background-image: 
+      radial-gradient(at 40% 20%, rgba(30, 27, 75, 0.8) 0, transparent 50%),
+      radial-gradient(at 80% 0%, rgba(49, 46, 129, 0.6) 0, transparent 50%),
+      radial-gradient(at 80% 50%, rgba(30, 27, 75, 0.5) 0, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(49, 46, 129, 0.4) 0, transparent 50%);
+    min-height: 100vh;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(91, 108, 255, 0.4);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(91, 108, 255, 0.6);
+  }
+}
+
+@layer components {
+  /* Glass card base */
+  .glass {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  }
+
+  .glass-heavy {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25);
+  }
+
+  .glass-dark {
+    background: rgba(11, 16, 32, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-400 to-accent bg-clip-text text-transparent;
+  }
+
+  .gradient-text-secondary {
+    @apply bg-gradient-to-r from-secondary-500 to-primary-500 bg-clip-text text-transparent;
+  }
+
+  /* Focus styles for accessibility */
+  .focus-ring {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
+  /* Sidebar nav item */
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-sm text-sm font-medium transition-all duration-200 cursor-pointer;
+    @apply text-white/60 hover:text-white hover:bg-white/8;
+  }
+
+  .nav-item.active {
+    @apply text-white bg-primary-500/20 border border-primary-500/30;
+  }
+
+  /* Tag chip */
+  .tag {
+    @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium;
+    @apply bg-white/10 text-white/80 border border-white/15;
+  }
+
+  /* Status badge */
+  .badge-green {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-500/20 text-emerald-400 border border-emerald-500/30;
+  }
+
+  .badge-amber {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-amber-500/20 text-amber-400 border border-amber-500/30;
+  }
+
+  .badge-red {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-red-500/20 text-red-400 border border-red-500/30;
+  }
+
+  .badge-blue {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-primary-500/20 text-primary-400 border border-primary-500/30;
+  }
+
+  /* Kanban column */
+  .kanban-column {
+    @apply glass rounded-md p-4 flex flex-col gap-3 min-h-64;
+  }
+
+  /* Input field */
+  .input-field {
+    @apply w-full px-4 py-3 glass rounded-sm text-white placeholder-white/40
+           border border-white/15 focus:border-primary-500/60 focus:outline-none
+           transition-all duration-200 text-sm;
+  }
+
+  /* Dropdown */
+  .dropdown-base {
+    @apply input-field cursor-pointer appearance-none;
+  }
+}
+
+@layer utilities {
+  .bg-white\/8 {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .bg-white\/12 {
+    background-color: rgba(255, 255, 255, 0.12);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Animated underline */
+  .animated-underline {
+    @apply relative;
+  }
+
+  .animated-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300;
+  }
+
+  .animated-underline:hover::after {
+    @apply w-full;
+  }
+}
