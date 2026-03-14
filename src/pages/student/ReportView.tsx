@@ -1,5 +1,7 @@
 
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
+
+
 import { Download, FileText, Lock, CheckCircle } from 'lucide-react';
 import { GlassCard } from '../../components/ui/GlassCard';
 import { Badge } from '../../components/ui/Badge';
@@ -44,12 +46,12 @@ const blockers = [
   { text: 'Waiting on professor feedback on design direction.', status: 'info' as const },
 ];
 
-const CustomTooltip = ({ active, payload, label }: any) => {
+const CustomTooltip = ({ active, payload, label }: { active?: boolean; payload?: Array<{ value?: number; name?: string; color?: string; dataKey?: string }>; label?: string }) => {
   if (active && payload?.length) {
     return (
       <div className="glass rounded-sm px-3 py-2">
         <p className="text-xs text-white/60 mb-1">{label}</p>
-        {payload.map((p: any) => (
+        {payload.map((p: { value?: number; color?: string; dataKey?: string }) => (
           <p key={p.dataKey} className="text-xs" style={{ color: p.color }}>{p.dataKey}: {p.value}h</p>
         ))}
       </div>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
+
 import { Flag, Eye, MessageSquare, BellOff, AlertTriangle, ChevronDown, Megaphone, Send } from 'lucide-react';
 import { GlassCard } from '../../components/ui/GlassCard';
 import { Badge } from '../../components/ui/Badge';
@@ -63,7 +64,7 @@ const statusConfig: Record<string, { badge: React.ReactNode; border: string }> =
   'at-risk': { badge: <Badge variant="warning">At Risk</Badge>, border: 'border border-amber-500/40' },
 };
 
-const CustomTooltip = ({ active, payload, label }: any) => {
+const CustomTooltip = ({ active, payload, label }: { active?: boolean; payload?: Array<{ value?: number; name?: string; color?: string; dataKey?: string }>; label?: string }) => {
   if (active && payload?.length) {
     return (
       <div className="glass rounded-sm px-3 py-2">

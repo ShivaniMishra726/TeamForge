@@ -1,5 +1,6 @@
 
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
+
 import { TrendingUp, CheckSquare, Users, Clock, Plus, Search, FileText, AlertTriangle, Calendar } from 'lucide-react';
 import { GlassCard } from '../../components/ui/GlassCard';
 import { Badge } from '../../components/ui/Badge';
@@ -73,7 +74,7 @@ function StatCard({ icon, label, value, sub, color }: StatCardProps) {
   );
 }
 
-const CustomTooltip = ({ active, payload, label }: any) => {
+const CustomTooltip = ({ active, payload, label }: { active?: boolean; payload?: Array<{ value?: number; name?: string; color?: string; dataKey?: string }>; label?: string }) => {
   if (active && payload?.length) {
     return (
       <div className="glass rounded-sm px-3 py-2">

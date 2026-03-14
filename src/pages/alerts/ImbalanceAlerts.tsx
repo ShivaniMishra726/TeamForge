@@ -137,6 +137,12 @@ function TeamAlert() {
   );
 }
 
+const AUDIT_DATES = {
+  nudge: new Date(Date.now() - 1209600000).toLocaleDateString(),
+  team: new Date(Date.now() - 604800000).toLocaleDateString(),
+  escalated: new Date().toLocaleDateString(),
+};
+
 function ProfessorAlert() {
   const [contextNote, setContextNote] = useState('');
   const [submitted, setSubmitted] = useState(false);
@@ -172,9 +178,9 @@ function ProfessorAlert() {
           <p className="text-xs font-semibold text-white/60 uppercase tracking-wider">Audit Trail</p>
         </div>
         <div className="space-y-1 font-mono">
-          <p className="text-xs text-white/40">[ {new Date(Date.now() - 1209600000).toLocaleDateString()} ] Private nudge sent</p>
-          <p className="text-xs text-white/40">[ {new Date(Date.now() - 604800000).toLocaleDateString()} ] Team alert issued</p>
-          <p className="text-xs text-red-400">[ {new Date().toLocaleDateString()} ] Escalated to professor</p>
+          <p className="text-xs text-white/40">[ {AUDIT_DATES.nudge} ] Private nudge sent</p>
+          <p className="text-xs text-white/40">[ {AUDIT_DATES.team} ] Team alert issued</p>
+          <p className="text-xs text-red-400">[ {AUDIT_DATES.escalated} ] Escalated to professor</p>
         </div>
       </div>
 

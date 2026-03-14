@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+
 import { Plus, ChevronRight, ChevronLeft, Clock, Link, AlertCircle } from 'lucide-react';
 import { GlassCard } from '../../components/ui/GlassCard';
 import { Badge } from '../../components/ui/Badge';
@@ -64,7 +65,7 @@ const pieData = [
 ];
 const PIE_COLORS = ['#5B6CFF', '#8A7CFF', '#00D4FF', '#F59E0B', '#10B981'];
 
-const CustomTooltip = ({ active, payload, label }: any) => {
+const CustomTooltip = ({ active, payload, label }: { active?: boolean; payload?: Array<{ value?: number; name?: string; color?: string; dataKey?: string }>; label?: string }) => {
   if (active && payload?.length) {
     return (
       <div className="glass rounded-sm px-3 py-2">
